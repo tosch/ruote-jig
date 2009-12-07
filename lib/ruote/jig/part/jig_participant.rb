@@ -82,6 +82,7 @@ module Ruote
     # http://github.com/tosch/ruote-jig/issues
     #
     class JigParticipant
+      include Ruote::EngineContext
       include Ruote::LocalParticipant
 
       #
