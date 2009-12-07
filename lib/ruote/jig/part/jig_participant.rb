@@ -190,7 +190,7 @@ module Ruote
         {
           :content_type => param(workitem, :content_type),
           :params => param(workitem, :params) || nil
-        }.merge(param(workitem, :options_for_jig_request))
+        }.merge(param(workitem, :options_for_jig_request) || {})
       end
     end
   end
