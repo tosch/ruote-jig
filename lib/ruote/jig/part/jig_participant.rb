@@ -176,7 +176,7 @@ module Ruote
       # as :data_preparition.
       #
       def prepare_data workitem
-        if(block = param(workitem, :data_preparition).is_a?(Proc))
+        if((block = param(workitem, :data_preparition)).is_a?(Proc))
           block.call workitem
         else
           workitem.to_h
