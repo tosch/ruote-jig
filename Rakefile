@@ -8,7 +8,8 @@ begin
     gemspec.homepage = "http://github.com/tosch/ruote-jig"
     gemspec.authors = ["Torsten Schönebaum"]
     gemspec.add_dependency('ruote', '>= 2.0.0')
-    gemspec.add_dependency('rufus-jig', '>= 0.1.1')
+    gemspec.add_dependency('rufus-jig', '>= 0.1.2')
+    gemspec.rdoc_options << '--line-numbers' << '--main' << 'README.rdoc'
   end
   Jeweler::GemcutterTasks.new
 rescue LoadError

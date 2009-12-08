@@ -27,8 +27,8 @@ require 'rufus/jig' # gem install rufus-jig
 require 'ruote/engine/context'         # gem install ruote
 require 'ruote/part/local_participant' # gem install ruote
 
-module Ruote
-  module Jig
+module Ruote #:nodoc:
+  module Jig #:nodoc:
     #
     # Ruote 2.0 participant which does a HTTP call using rufus-jig
     # (http://rufus.rubyforge.org/rufus-jig/), a HTTP client, greedy with JSON
@@ -42,7 +42,7 @@ module Ruote
     # The handling of outgoing and incoming data may be customized by Procs.
     #
     # == Using it
-    #   require 'yajl' # by default, you will need some JSON lib (yajl-ruby or json 'pure' or ActiveSupport)
+    #   require 'yajl' # by default, you will need some JSON lib (yajl-ruby or json_pure or ActiveSupport)
     #
     #   # require this lib
     #   require 'ruote/jig/part/jig_participant'
@@ -93,7 +93,7 @@ module Ruote
       # :method <Symbol>:: Which HTTP method shall be used? One of :get, :post, :put and :delete.
       # :options_for_jig <Hash>:: Hash of options which will be passed to Rufus::Jig::Http.new.
       # :options_for_jig_requests <Hash>:: Hash of options which will be passed to the get, put, post or delete method of Rufus::Jig::Http
-      # :response_handling <Proc>:: An optional Proc which handles the results Rufus::Jig::Http returns. Takes the results and the workitem as arguments. By default (when no Proc is given), the server's response is stored in the workitem field __jig_response__ and the HTTP status code in __jig_status__.
+      # :response_handling <Proc>:: An optional Proc which handles the results Rufus::Jig::Http returns. Takes the results and the workitem as arguments. By default (when no Proc is given), the server's response is stored in the workitem field \_\_jig_response__ and the HTTP status code in \_\_jig_status__.
       # :data_preparition <Proc>:: An optional Proc which prepares the data being sent with POST or PUT requests. Takes the workitem as argument. Should return a string or another type Rufus::Jig::Http can handle. By default (if no Proc is given), the workitem will be converted into a Hash (and then into a JSON string by rufus-jig).
       # :content_type <String or Symbol>:: The content type to use for the HTTP request. Defaults to :json. Other types has to be submitted as strings. Note that you really should provide a :data_preparition-Proc if you don't use JSON!
       #
@@ -113,6 +113,13 @@ module Ruote
         @http = Rufus::Jig::Http.new @options[:host], @options[:port], @options[:options_for_jig] || {}
       end
 
+      #
+      # This is where the work is done...
+      #
+      # The engine calls this method and passes it a workitem as argument. The
+      # HTTP request will be processed and the workitem will be returned to the
+      # engine immediately after that.
+      #
       def consume workitem
         # do we need a new instance of the http client?
         http = if(@http.host == param(workitem, :host) and @http.port == param(workitem, :port))
