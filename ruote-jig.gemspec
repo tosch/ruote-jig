@@ -9,20 +9,27 @@ Gem::Specification.new do |s|
 
   s.required_rubygems_version = Gem::Requirement.new(">= 0") if s.respond_to? :required_rubygems_version=
   s.authors = ["Torsten Sch\303\266nebaum"]
-  s.date = %q{2009-12-07}
+  s.date = %q{2009-12-08}
   s.description = %q{A ruote 2.0 participant implementation using rufus-jig to notify HTTP interfaces (mostly JSON-aware) about workitems.}
   s.email = %q{torsten.schoenebaum@planquadrat-software.de}
+  s.extra_rdoc_files = [
+    "LICENSE.txt",
+     "README.rdoc"
+  ]
   s.files = [
     ".gitignore",
+     "LICENSE.txt",
+     "README.rdoc",
      "Rakefile",
      "VERSION",
      "example.rb",
      "lib/ruote/jig/part/jig_participant.rb",
+     "ruote-jig.gemspec",
      "test/test.rb",
      "test/ut_0.rb"
   ]
   s.homepage = %q{http://github.com/tosch/ruote-jig}
-  s.rdoc_options = ["--charset=UTF-8"]
+  s.rdoc_options = ["--charset=UTF-8", "--line-numbers", "--main", "README.rdoc"]
   s.require_paths = ["lib"]
   s.rubygems_version = %q{1.3.5}
   s.summary = %q{Ruote participant using rufus-jig}
@@ -37,14 +44,14 @@ Gem::Specification.new do |s|
 
     if Gem::Version.new(Gem::RubyGemsVersion) >= Gem::Version.new('1.2.0') then
       s.add_runtime_dependency(%q<ruote>, [">= 2.0.0"])
-      s.add_runtime_dependency(%q<rufus-jig>, [">= 0.1.1"])
+      s.add_runtime_dependency(%q<rufus-jig>, [">= 0.1.2"])
     else
       s.add_dependency(%q<ruote>, [">= 2.0.0"])
-      s.add_dependency(%q<rufus-jig>, [">= 0.1.1"])
+      s.add_dependency(%q<rufus-jig>, [">= 0.1.2"])
     end
   else
     s.add_dependency(%q<ruote>, [">= 2.0.0"])
-    s.add_dependency(%q<rufus-jig>, [">= 0.1.1"])
+    s.add_dependency(%q<rufus-jig>, [">= 0.1.2"])
   end
 end
 
