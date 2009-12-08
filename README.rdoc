@@ -1,7 +1,14 @@
+= ruote-jig
 
-= ruote-activeresource
+Ruote 2.0 participant which does a HTTP call using rufus-jig
+(http://rufus.rubyforge.org/rufus-jig/), a HTTP client, greedy with JSON
+content.
 
-ruote 2.0 extension for a participant using rufus-jig to send http messages around
+By default, it POSTs received workitems as JSON to a HTTP server and stores the
+answer back into the workitem. If the answer is in JSON, it is automatically
+converted into Ruby data types (this magic is thanks to rufus-jig).
+
+The handling of outgoing and incoming data may be customized by Procs.
 
 == usage
 
